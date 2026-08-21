@@ -47,7 +47,7 @@ export type Skill = {
   experience: string;
 
   projects: string[];
-
+  children?: string[];
   relatedSkills: string[];
   dependencies: string[];
 

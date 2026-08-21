@@ -5,6 +5,7 @@ import type { Skill } from "@/data/skills";
 
 type SkillNodeProps = {
   skill: Skill;
+  primary?: boolean;
   selected?: boolean;
   connected?: boolean;
   dimmed?: boolean;
