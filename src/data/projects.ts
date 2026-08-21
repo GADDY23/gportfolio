@@ -87,50 +87,56 @@ export const projects: Project[] = [
     liveUrl: "",
   },
 
-  {
-    id: "academic-project",
-    number: "02",
+ {
+  id: "healthcare-hospital-system",
+  number: "02",
 
-    title:
-      "Academic Web Application",
+  title:
+    "Healthcare Hospital Management System",
 
-    subtitle:
-      "Academic Project",
+  subtitle:
+    "Patient Appointment & Hospital Management",
 
-    type: "ACADEMIC PROJECT",
+  type: "FULL-STACK WEB APPLICATION",
 
-    status: "Completed",
+  status: "Completed",
 
-    description:
-      "A web-based academic project created as part of my Information Systems studies. The project demonstrates practical application of web development, database management, and user interface design.",
+  description:
+    "A web-based healthcare management system designed to streamline hospital services, patient information, and appointment scheduling. The system allows patients to explore medical services, departments, and doctors, manage their profiles, and schedule appointments, while administrators can manage hospital records and appointments.",
 
-    role:
-      "Developer",
+  role:
+    "Full-Stack Developer",
 
-    technologies: [
-      "PHP",
-      "MySQL",
-      "HTML",
-      "CSS",
-      "JavaScript",
-    ],
+  technologies: [
+    "Laravel",
+    "PHP",
+    "MySQL",
+    "Blade",
+    "Tailwind CSS",
+    "JavaScript",
+    "Filament",
+  ],
 
-    features: [
-      "Web-based interface",
-      "Database integration",
-      "CRUD functionality",
-      "Responsive layout",
-      "User interaction",
-    ],
+  features: [
+    "Patient registration",
+    "Patient profile management",
+    "Doctor directory",
+    "Department management",
+    "Hospital services",
+    "Appointment scheduling",
+    "Appointment tracking",
+    "Administrative dashboard",
+  ],
 
-    image:
-      "/projects/student.png",
+  image:
+    "/projects/hp.png",
 
-    github:
-      "https://github.com/",
+  github:
+    "",
 
-    liveUrl: "",
-  },
+  liveUrl:
+    "",
+},
 
   {
     id: "personal-portfolio",
