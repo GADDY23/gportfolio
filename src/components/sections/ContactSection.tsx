@@ -185,7 +185,7 @@ export default function ContactSection() {
                 icon={<FileTextIcon size={15} />}
                 label="RESUME"
                 value="Download Resume"
-                href="/resume.pdf"
+                href="/resume/resume.pdf"
               />
 
               {/* GitHub */}
