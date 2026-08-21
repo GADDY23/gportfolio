@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
+
 import LoadingScreen from "@/components/loading/LoadingScreen";
 import AboutSection from "@/components/about/AboutSection";
 import EducationSection from "@/components/sections/EducationSection";
@@ -17,12 +18,11 @@ import ExperienceSection from "@/components/sections/ExperienceSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 
+function PortfolioContent() {
+  const searchParams = useSearchParams();
+  const skipLoading = searchParams.get("skipLoading") === "true";
 
-export default function Home() {
-const searchParams = useSearchParams();
-const skipLoading = searchParams.get("skipLoading") === "true";
-
-const [loading, setLoading] = useState(!skipLoading);
+  const [loading, setLoading] = useState(!skipLoading);
 
   const [activeSection, setActiveSection] =
     useState<SectionId>("about");
@@ -37,16 +37,22 @@ const [loading, setLoading] = useState(!skipLoading);
   | Change section
   |--------------------------------------------------------------------------
   */
-useEffect(() => {
-  if (!loading && window.location.hash === "#about") {
-    setTimeout(() => {
-      document.getElementById("about")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }, 100);
-  }
-}, [loading]);
+
+  useEffect(() => {
+    if (!loading && window.location.hash === "#about") {
+      const timeout = window.setTimeout(() => {
+        document.getElementById("about")?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 100);
+
+      return () => {
+        window.clearTimeout(timeout);
+      };
+    }
+  }, [loading]);
+
   const changeSection = useCallback(
     (nextSection: SectionId) => {
       if (isTransitioning.current) return;
@@ -65,7 +71,6 @@ useEffect(() => {
         nextIndex > currentIndex ? 1 : -1;
 
       setDirection(nextDirection);
-
       setActiveSection(nextSection);
 
       isTransitioning.current = true;
@@ -149,7 +154,10 @@ useEffect(() => {
     if (loading) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== "ArrowDown" && event.key !== "ArrowUp") {
+      if (
+        event.key !== "ArrowDown" &&
+        event.key !== "ArrowUp"
+      ) {
         return;
       }
 
@@ -211,17 +219,12 @@ useEffect(() => {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white">
-
       <ProfileHUD />
-
-      {/* Section navigation */}
 
       <SectionRail
         activeSection={activeSection}
         onSelect={changeSection}
       />
-
-      {/* Current section */}
 
       <SectionTransition
         section={activeSection}
@@ -248,12 +251,17 @@ useEffect(() => {
         )}
 
         {activeSection === "contact" && (
-        <ContactSection />
+          <ContactSection />
         )}
-
-
       </SectionTransition>
-
     </main>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={null}>
+      <PortfolioContent />
+    </Suspense>
   );
 }
