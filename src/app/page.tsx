@@ -145,57 +145,81 @@ function PortfolioContent() {
   }, [loading, activeSection, changeSection]);
 
   /*
-  |--------------------------------------------------------------------------
-  | Keyboard navigation
-  |--------------------------------------------------------------------------
-  */
+|--------------------------------------------------------------------------
+| Mobile swipe navigation
+|--------------------------------------------------------------------------
+*/
 
-  useEffect(() => {
-    if (loading) return;
+useEffect(() => {
+  if (loading) return;
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (
-        event.key !== "ArrowDown" &&
-        event.key !== "ArrowUp"
-      ) {
-        return;
-      }
+  let touchStartY = 0;
+  let touchEndY = 0;
 
-      event.preventDefault();
+  const minSwipeDistance = 50;
 
+  const handleTouchStart = (event: TouchEvent) => {
+    touchStartY = event.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (event: TouchEvent) => {
+    touchEndY = event.changedTouches[0].clientY;
+
+    const swipeDistance = touchStartY - touchEndY;
+
+    // Swipe UP → next section
+    if (swipeDistance > minSwipeDistance) {
       const currentIndex = sections.findIndex(
         (section) => section.id === activeSection
       );
 
-      if (event.key === "ArrowDown") {
-        const nextIndex = Math.min(
-          currentIndex + 1,
-          sections.length - 1
-        );
+      const nextIndex = Math.min(
+        currentIndex + 1,
+        sections.length - 1
+      );
 
-        if (nextIndex !== currentIndex) {
-          changeSection(sections[nextIndex].id);
-        }
+      if (nextIndex !== currentIndex) {
+        changeSection(sections[nextIndex].id);
       }
+    }
 
-      if (event.key === "ArrowUp") {
-        const previousIndex = Math.max(
-          currentIndex - 1,
-          0
-        );
+    // Swipe DOWN → previous section
+    if (swipeDistance < -minSwipeDistance) {
+      const currentIndex = sections.findIndex(
+        (section) => section.id === activeSection
+      );
 
-        if (previousIndex !== currentIndex) {
-          changeSection(sections[previousIndex].id);
-        }
+      const previousIndex = Math.max(
+        currentIndex - 1,
+        0
+      );
+
+      if (previousIndex !== currentIndex) {
+        changeSection(sections[previousIndex].id);
       }
-    };
+    }
+  };
 
-    window.addEventListener("keydown", handleKeyDown);
+  window.addEventListener("touchstart", handleTouchStart, {
+    passive: true,
+  });
 
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [loading, activeSection, changeSection]);
+  window.addEventListener("touchend", handleTouchEnd, {
+    passive: true,
+  });
+
+  return () => {
+    window.removeEventListener(
+      "touchstart",
+      handleTouchStart
+    );
+
+    window.removeEventListener(
+      "touchend",
+      handleTouchEnd
+    );
+  };
+}, [loading, activeSection, changeSection]);
 
   /*
   |--------------------------------------------------------------------------
