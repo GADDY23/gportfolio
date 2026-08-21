@@ -79,7 +79,7 @@ export const projects: Project[] = [
      */
 
     video:
-      "/videos/schedulingvideo.mp4",
+      "/videos/Schedulingvideo.mp4",
 
     github:
       "https://github.com/",
