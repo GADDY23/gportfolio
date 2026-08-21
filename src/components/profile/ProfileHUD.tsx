@@ -153,7 +153,7 @@ export default function ProfileHUD() {
               }}
             >
               <Image
-                src="/images/avatar.jpg"
+                src="/projects/avatar.jpg"
                 alt="Gerald S. Recaña"
                 fill
                 priority

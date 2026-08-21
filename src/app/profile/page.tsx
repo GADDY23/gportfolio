@@ -186,7 +186,7 @@ export default function ProfilePage() {
               >
 
                 <Image
-                  src="/images/avatar.jpg"
+                  src="/projects/avatar.jpg"
                   alt="Gerald S. Recaña"
                   fill
                   priority
