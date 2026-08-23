@@ -186,6 +186,56 @@ export const projects: Project[] = [
     liveUrl:
       "",
   },
+  {
+  id: "saffron-table",
+  number: "04",
+
+  title:
+    "Saffron Table Reservation Platform",
+
+  subtitle:
+    "Dining Experiences • Guest Registration • Online Booking",
+
+  type: "FULL-STACK WEB APPLICATION",
+
+  status: "Completed",
+
+  description:
+    "A responsive restaurant reservation platform built for Saffron Table. The system allows guests to explore dining experiences, view menus, register accounts, and book reservations online. Administrators can manage guest records, reservations, and system data through a secure admin panel.",
+
+  role:
+    "Full-Stack Developer",
+
+  technologies: [
+    "Laravel",
+    "PHP",
+    "MySQL",
+    "Tailwind CSS",
+    "JavaScript",
+    "Filament",
+  ],
+
+  features: [
+    "Responsive homepage with navigation",
+    "Dining experiences showcase",
+    "Menu display",
+    "Guest registration and profile management",
+    "Reservation booking and confirmation",
+    "Admin login and role-based access",
+    "User record management",
+    "Reservation tracking dashboard",
+  ],
+
+  image:
+    "/projects/table.png",
+
+  github:
+    "",
+
+  liveUrl:
+    "",
+},
+
 ];
 
 export const getProject = (id: string) =>
