@@ -31,10 +31,10 @@ export const projects: Project[] = [
     status: "Completed",
 
     description:
-      "A web-based scheduling and assignment system developed to help ACLC College of Taytay manage rooms, teachers, sections, subjects, and class schedules through a centralized platform.",
+      "A web-based scheduling and assignment system developed to help ACLC College of Taytay manage rooms, teachers, sections, subjects, and class schedules through a centralized platform. To steamline schedule management, the system allows administrators to assign rooms and teachers to sections, detect scheduling conflicts, and manage schedules efficiently.",
 
     role:
-      "Full-Stack Developer",
+      "Lead Full-Stack Developer",
 
     technologies: [
       "PHP",
@@ -42,8 +42,8 @@ export const projects: Project[] = [
       "MySQL",
       "Tailwind CSS",
       "JavaScript",
-      "Livewire",
-      "Filament",
+      "HTML",
+      "Blade",
     ],
 
     features: [

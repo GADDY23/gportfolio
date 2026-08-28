@@ -236,9 +236,10 @@ export default function ProfilePage() {
             {/* Description */}
 
             <p className="mt-2 max-w-[290px] text-center font-mono text-[9px] leading-5 text-white/50">
-              A rising Full Stack Developer focused on building
-              practical digital systems, solving real-world problems,
-              and continuously improving through hands-on experience.
+              I believe that technology is more than just writing code
+              it’s about solving problems, creating meaningful experiences, 
+              and turning ideas into reality. Every project gives me a chance to learn something new,
+              every challenge pushes me to improve, and every experience brings me closer to becoming the developer I aspire to be.
             </p>
 
           </div>

@@ -360,7 +360,7 @@ export default function ProjectsSection() {
                     DESCRIPTION
                   </SectionLabel>
 
-                  <p className="mt-2 max-w-2xl text-[10px] leading-5 text-white/55">
+                  <p className="mt-2 max-w-2xl text-[12px] leading-5 text-white/55">
                     {selectedProject.description}
                   </p>
 
@@ -402,7 +402,7 @@ export default function ProjectsSection() {
                             px-2
                             py-1
                             font-mono
-                            text-[7px]
+                            text-[9px]
                             text-purple-200/70
                           "
                         >
@@ -429,7 +429,7 @@ export default function ProjectsSection() {
                       (feature) => (
                         <div
                           key={feature}
-                          className="flex items-center gap-2 text-[8px] text-white/45"
+                          className="flex items-center gap-2 text-[10px] text-white/45"
                         >
                           <span className="text-cyan-400">
                             ◆
